@@ -21,7 +21,7 @@ export default function BillDetails() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:3000/bills/${id}`)
+      .get(`https://b12a10v3.vercel.app/bills/${id}`)
       .then((res) => setBill(res.data))
       .catch(() => toast.error("Failed to load bill details"))
       .finally(() => setLoading(false));
@@ -52,7 +52,7 @@ export default function BillDetails() {
     };
 
     try {
-      await axios.post("http://localhost:3000/myBills", paymentData);
+      await axios.post("https://b12a10v3.vercel.app/myBills", paymentData);
       toast.success("Bill paid successfully!");
       setShowModal(false);
     } catch (err) {

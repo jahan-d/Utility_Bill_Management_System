@@ -34,13 +34,14 @@ export default function Register() {
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form
         onSubmit={handleRegister}
-        className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
+        className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md"
       >
         <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">
           Register
         </h2>
 
         {/* Name */}
+        <h2>Name</h2>
         <input
           type="text"
           placeholder="Full Name"
@@ -51,6 +52,7 @@ export default function Register() {
         />
 
         {/* Email */}
+        <h1>Email</h1>
         <input
           type="email"
           placeholder="Email"
@@ -61,6 +63,7 @@ export default function Register() {
         />
 
         {/* Password */}
+        <h1>Password</h1>
         <input
           type="password"
           placeholder="Password"

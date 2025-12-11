@@ -13,8 +13,8 @@ export default function Bills() {
   useEffect(() => {
     setLoading(true);
     const url = categoryFilter
-      ? `http://localhost:3000/bills?category=${categoryFilter}`
-      : `http://localhost:3000/bills`;
+      ? `https://b12a10v3.vercel.app/bills?category=${categoryFilter}`
+      : `https://b12a10v3.vercel.app/bills`;
 
     axios
       .get(url)

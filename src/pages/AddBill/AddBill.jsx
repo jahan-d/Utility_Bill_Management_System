@@ -59,7 +59,7 @@ export default function AddBill() {
         image: form.image || "https://via.placeholder.com/800x400?text=Bill+Image",
       };
 
-      const response = await fetch("http://localhost:3000/bills", {
+      const response = await fetch("https://b12a10v3.vercel.app/bills", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

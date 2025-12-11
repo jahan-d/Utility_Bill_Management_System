@@ -18,7 +18,7 @@ export default function MyBills() {
     if (!user) return;
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:3000/myBills?email=${user.email}`);
+      const res = await axios.get(`https://b12a10v3.vercel.app/myBills?email=${user.email}`);
       setBills(res.data);
     } catch (err) {
       console.error(err);
@@ -40,7 +40,7 @@ export default function MyBills() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this bill?")) return;
     try {
-      await axios.delete(`http://localhost:3000/myBills/${id}`);
+      await axios.delete(`https://b12a10v3.vercel.app/myBills/${id}`);
       toast.success("Bill deleted successfully.");
       fetchBills();
     } catch (err) {
@@ -64,7 +64,7 @@ export default function MyBills() {
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/myBills/${selectedBill._id}`, formData);
+      await axios.put(`https://b12a10v3.vercel.app/myBills/${selectedBill._id}`, formData);
       toast.success("Bill updated successfully.");
       setShowUpdateModal(false);
       fetchBills();

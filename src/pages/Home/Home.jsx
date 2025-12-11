@@ -18,8 +18,8 @@ export default function Home() {
   useEffect(() => {
     setLoading(true);
     const url = categoryFilter
-      ? `http://localhost:3000/bills?category=${categoryFilter}&limit=6`
-      : `http://localhost:3000/bills?limit=6`;
+      ? `https://b12a10v3.vercel.app/bills?category=${categoryFilter}&limit=6`
+      : `https://b12a10v3.vercel.app/bills?limit=6`;
 
     axios
       .get(url)

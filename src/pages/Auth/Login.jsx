@@ -44,13 +44,14 @@ export default function Login() {
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form
         onSubmit={handleLogin}
-        className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
+        className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md"
       >
         <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">
           Login
         </h2>
 
         {/* Email */}
+        <h2 >Email</h2>
         <input
           type="email"
           placeholder="Email"
@@ -61,6 +62,7 @@ export default function Login() {
         />
 
         {/* Password */}
+        <h2>Password</h2>
         <input
           type="password"
           placeholder="Password"
