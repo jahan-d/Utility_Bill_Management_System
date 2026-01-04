@@ -31,61 +31,73 @@ export default function Register() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/20 py-12 px-4">
       <form
         onSubmit={handleRegister}
-        className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md"
+        className="bg-gradient-to-br from-white via-slate-50/50 to-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-200/50"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center text-white">
-          Register
-        </h2>
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-200">
+            <span className="text-white font-bold text-3xl">✨</span>
+          </div>
+          <h2 className="text-3xl font-bold text-slate-800">
+            Create Account
+          </h2>
+          <p className="text-slate-600 mt-2">Join us to manage your utility bills</p>
+        </div>
 
         {/* Name */}
-        <h2 className="text-white">Name</h2>
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          className="w-full p-3 mb-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <div className="mb-4">
+          <label className="block text-slate-700 font-medium mb-2">Full Name</label>
+          <input
+            type="text"
+            placeholder="John Doe"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full p-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition bg-white/80"
+          />
+        </div>
 
         {/* Email */}
-        <h2 className="text-white">Email</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className="w-full p-3 mb-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <div className="mb-4">
+          <label className="block text-slate-700 font-medium mb-2">Email</label>
+          <input
+            type="email"
+            placeholder="your@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full p-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition bg-white/80"
+          />
+        </div>
 
         {/* Password */}
-        <h2 className="text-white">Password</h2>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="w-full p-3 mb-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <div className="mb-6">
+          <label className="block text-slate-700 font-medium mb-2">Password</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="w-full p-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition bg-white/80"
+          />
+        </div>
 
         {/* Register Button */}
         <button
           type="submit"
-          className="w-full bg-green-500 text-white py-3 rounded hover:bg-green-600 mb-3"
+          className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 rounded-lg hover:from-emerald-600 hover:to-teal-700 transition-all font-semibold shadow-lg shadow-emerald-200 hover:shadow-xl mb-4"
         >
-          Register
+          Create Account
         </button>
 
         {/* Login Link */}
-        <p className="mt-3 text-center text-gray-300">
+        <p className="mt-6 text-center text-slate-600">
           Already have an account?{" "}
-          <Link to="/login" className="text-blue-500 hover:underline">
-            Login
+          <Link to="/login" className="text-emerald-600 hover:text-emerald-700 font-semibold hover:underline">
+            Sign in
           </Link>
         </p>
       </form>
