@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut, createUserWithEmailAndPassword } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 const AuthContext = createContext();
@@ -20,6 +20,16 @@ export function AuthProvider({ children }) {
     return () => unsubscribe();
   }, []);
 
+  // Register function
+  const register = async (email, password) => {
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   // Logout function
   const logout = async () => {
     try {
@@ -31,7 +41,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, logout }}>
+    <AuthContext.Provider value={{ user, loading, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

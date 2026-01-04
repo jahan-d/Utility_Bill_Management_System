@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { Fade, Slide } from "react-awesome-reveal";
 
 export default function MyBills() {
   const { user } = useAuth();
@@ -97,65 +98,74 @@ export default function MyBills() {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4 text-blue-900">My Bills</h2>
-      <div className="mb-4">
-        <p className="text-blue-800 font-semibold">Total Bills Paid: {totalPaid}</p>
-        <p className="text-green-700 font-bold">Total Amount: ৳ {totalAmount}</p>
-      </div>
+      <Fade triggerOnce>
+        <h2 className="text-2xl font-bold mb-4 text-blue-900">My Bills</h2>
+      </Fade>
 
-      <button
-        onClick={handleDownload}
-        className="mb-4 px-4 py-2 bg-purple-700 text-white rounded hover:bg-purple-800"
-      >
-        Download Report
-      </button>
+      <Fade delay={100} triggerOnce>
+        <div className="mb-4">
+          <p className="text-blue-800 font-semibold">Total Bills Paid: {totalPaid}</p>
+          <p className="text-green-700 font-bold">Total Amount: ৳ {totalAmount}</p>
+        </div>
+      </Fade>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse border border-gray-300">
-          <thead className="bg-blue-100 text-blue-900">
-            <tr>
-              <th className="border px-4 py-2">Username</th>
-              <th className="border px-4 py-2">Email</th>
-              <th className="border px-4 py-2">Amount</th>
-              <th className="border px-4 py-2">Address</th>
-              <th className="border px-4 py-2">Phone</th>
-              <th className="border px-4 py-2">Date</th>
-              <th className="border px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bills.map((b) => (
-              <tr key={b._id} className="bg-white hover:bg-blue-50">
-                <td className="border px-4 py-2 text-blue-800">{b.username}</td>
-                <td className="border px-4 py-2 text-blue-700">{b.email}</td>
-                <td className="border px-4 py-2 text-green-800 font-semibold">৳ {b.amount}</td>
-                <td className="border px-4 py-2 text-gray-700">{b.address}</td>
-                <td className="border px-4 py-2 text-gray-700">{b.phone}</td>
-                <td className="border px-4 py-2 text-gray-600">{new Date(b.date).toLocaleDateString()}</td>
-                <td className="border px-4 py-2 flex gap-2">
-                  <button
-                    onClick={() => handleUpdateClick(b)}
-                    className="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => handleDelete(b._id)}
-                    className="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700"
-                  >
-                    Delete
-                  </button>
-                </td>
+      <Slide direction="up" triggerOnce>
+        <button
+          onClick={handleDownload}
+          className="mb-4 px-4 py-2 bg-purple-700 text-white rounded hover:bg-purple-800"
+        >
+          Download Report
+        </button>
+      </Slide>
+
+      <Slide direction="up" delay={200} triggerOnce>
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse border border-gray-300">
+            <thead className="bg-blue-100 text-blue-900">
+              <tr>
+                <th className="border px-4 py-2">Username</th>
+                <th className="border px-4 py-2">Email</th>
+                <th className="border px-4 py-2">Amount</th>
+                <th className="border px-4 py-2">Address</th>
+                <th className="border px-4 py-2">Phone</th>
+                <th className="border px-4 py-2">Date</th>
+                <th className="border px-4 py-2">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {bills.map((b) => (
+                <tr key={b._id} className="bg-white hover:bg-blue-50">
+                  <td className="border px-4 py-2 text-blue-800">{b.username}</td>
+                  <td className="border px-4 py-2 text-blue-700">{b.email}</td>
+                  <td className="border px-4 py-2 text-green-800 font-semibold">৳ {b.amount}</td>
+                  <td className="border px-4 py-2 text-gray-700">{b.address}</td>
+                  <td className="border px-4 py-2 text-gray-700">{b.phone}</td>
+                  <td className="border px-4 py-2 text-gray-600">{new Date(b.date).toLocaleDateString()}</td>
+                  <td className="border px-4 py-2 flex gap-2">
+                    <button
+                      onClick={() => handleUpdateClick(b)}
+                      className="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                    >
+                      Update
+                    </button>
+                    <button
+                      onClick={() => handleDelete(b._id)}
+                      className="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Slide>
 
       {/* Update Modal */}
       {showUpdateModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className=" p-6 rounded shadow-md w-full max-w-md">
+          <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
             <h3 className="text-xl font-bold mb-4 text-blue-900">Update Bill</h3>
             <form onSubmit={handleUpdateSubmit} className="space-y-3">
               <input

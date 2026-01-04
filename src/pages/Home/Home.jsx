@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
+import { Fade, Slide } from "react-awesome-reveal";
 
 export default function Home() {
   const [recentBills, setRecentBills] = useState([]);
@@ -30,70 +31,78 @@ export default function Home() {
 
   return (
     <div className="space-y-8">
-      {/* Banner */}
-      <section className="text-center py-12 bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-lg">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">
-          Welcome to Utility Bill Management
-        </h1>
-        <p className="text-lg md:text-xl">View, pay, and manage your bills easily online.</p>
-      </section>
+      {/* Banner with Fade Animation */}
+      <Fade triggerOnce>
+        <section className="text-center py-12 bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-lg">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            Welcome to Utility Bill Management
+          </h1>
+          <p className="text-lg md:text-xl">View, pay, and manage your bills easily online.</p>
+        </section>
+      </Fade>
 
-      {/* Categories */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center ">
-        {categories.map((cat) => (
+      {/* Categories with Slide Animation */}
+      <Slide direction="up" cascade damping={0.1} triggerOnce>
+        <section className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center ">
+          {categories.map((cat) => (
+            <div
+              key={cat.name}
+              className={`${cat.color} p-4 rounded cursor-pointer hover:scale-105 transition`}
+              onClick={() => setCategoryFilter(cat.name)}
+            >
+              <span className="text-2xl">{cat.emoji}</span>
+              <h3 className="mt-2 font-semibold">{cat.name}</h3>
+            </div>
+          ))}
           <div
-            key={cat.name}
-            className={`${cat.color} p-4 rounded cursor-pointer hover:scale-105 transition`}
-            onClick={() => setCategoryFilter(cat.name)}
+            className="p-4 bg-gray-200 rounded cursor-pointer hover:scale-105 transition"
+            onClick={() => setCategoryFilter("")}
           >
-            <span className="text-2xl">{cat.emoji}</span>
-            <h3 className="mt-2 font-semibold">{cat.name}</h3>
+            <h3 className="mt-2 font-semibold ">All</h3>
           </div>
-        ))}
-        <div
-          className="p-4 bg-gray-200 rounded cursor-pointer hover:scale-105 transition"
-          onClick={() => setCategoryFilter("")}
-        >
-          <h3 className="mt-2 font-semibold ">All</h3>
-        </div>
-      </section>
+        </section>
+      </Slide>
 
-      {/* Recent Bills */}
+      {/* Recent Bills with Fade Animation */}
       <section>
-        <h2 className="text-2xl font-bold mb-4">Recent Bills</h2>
+        <Fade triggerOnce>
+          <h2 className="text-2xl font-bold mb-4">Recent Bills</h2>
+        </Fade>
         {loading ? (
           <p>Loading bills...</p>
         ) : recentBills.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {recentBills.map((bill) => (
-              <div
-                key={bill._id}
-                className="p-4 border rounded shadow-sm hover:shadow-md transition"
-              >
-                <img
-                  src={bill.image}
-                  alt={bill.title}
-                  className="h-40 w-full object-cover mb-2 rounded"
-                />
-                <h3 className="font-semibold">{bill.title}</h3>
-                <p className="text-sm text-gray-600">{bill.category}</p>
-                <p className="text-sm">{bill.location}</p>
-                <p className="font-bold text-blue-600">৳ {bill.amount}</p>
-                <Link
-                  to={`/bills/${bill._id}`}
-                  className="inline-block mt-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+          <Slide direction="up" cascade damping={0.05} triggerOnce>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {recentBills.map((bill) => (
+                <div
+                  key={bill._id}
+                  className="p-4 border rounded shadow-sm hover:shadow-md transition"
                 >
-                  See Details
-                </Link>
-              </div>
-            ))}
-          </div>
+                  <img
+                    src={bill.image}
+                    alt={bill.title}
+                    className="h-40 w-full object-cover mb-2 rounded"
+                  />
+                  <h3 className="font-semibold">{bill.title}</h3>
+                  <p className="text-sm text-gray-600">{bill.category}</p>
+                  <p className="text-sm">{bill.location}</p>
+                  <p className="font-bold text-blue-600">৳ {bill.amount}</p>
+                  <Link
+                    to={`/bills/${bill._id}`}
+                    className="inline-block mt-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                  >
+                    See Details
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </Slide>
         ) : (
           <p>No recent bills found.</p>
         )}
       </section>
 
-      
+
     </div>
   );
 }

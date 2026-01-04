@@ -36,12 +36,12 @@ export default function Register() {
         onSubmit={handleRegister}
         className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">
+        <h2 className="text-2xl font-bold mb-4 text-center text-white">
           Register
         </h2>
 
         {/* Name */}
-        <h2>Name</h2>
+        <h2 className="text-white">Name</h2>
         <input
           type="text"
           placeholder="Full Name"
@@ -52,7 +52,7 @@ export default function Register() {
         />
 
         {/* Email */}
-        <h1>Email</h1>
+        <h2 className="text-white">Email</h2>
         <input
           type="email"
           placeholder="Email"
@@ -63,7 +63,7 @@ export default function Register() {
         />
 
         {/* Password */}
-        <h1>Password</h1>
+        <h2 className="text-white">Password</h2>
         <input
           type="password"
           placeholder="Password"
@@ -82,7 +82,7 @@ export default function Register() {
         </button>
 
         {/* Login Link */}
-        <p className="mt-3 text-center text-gray-700">
+        <p className="mt-3 text-center text-gray-300">
           Already have an account?{" "}
           <Link to="/login" className="text-blue-500 hover:underline">
             Login

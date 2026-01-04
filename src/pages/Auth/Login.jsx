@@ -46,7 +46,7 @@ export default function Login() {
         onSubmit={handleLogin}
         className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">
+        <h2 className="text-2xl font-bold mb-4 text-center text-white">
           Login
         </h2>
 
@@ -95,7 +95,7 @@ export default function Login() {
         </button>
 
         {/* Register Link */}
-        <p className="mt-3 text-center text-gray-700">
+        <p className="mt-3 text-center text-gray-300">
           Don't have an account?{" "}
           <Link to="/register" className="text-blue-500 hover:underline">
             Register
